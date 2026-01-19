@@ -1,0 +1,252 @@
+:root {
+    --black: #333;
+    --maroon: #550000;
+    --text-color: #333;
+}
+
+/* NAVBAR */
+.custom-navbar {
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* BRAND */
+.custom-brand {
+    color: var(--black);
+    font-size: 1.4rem; 
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+/* NAV LINK */
+.custom-nav .custom-link {
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 0.9rem; 
+    padding-bottom: 4px;
+    position: relative;
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.custom-nav .custom-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--black);
+    left: 0;
+    bottom: 0;
+    transition: width .3s;
+}
+
+.custom-nav .custom-link:hover {
+    color: var(--maroon);
+}
+
+.custom-nav .custom-link:hover::after,
+.custom-nav .custom-link.active::after {
+    width: 100%;
+}
+
+/* PROFILE */
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+@media (max-width: 991px) {
+    .profile-img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+
+/* TABLE */
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* BUTTON */
+.btn-warning {
+    background-color: #ffe600;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #ff3d3d;
+    border: none;
+}
+
+.btn-mro{
+    background-color: #9785be;
+    border: none;
+}
+/* Judul halaman */
+.page-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+/* Subjudul */
+.page-subtitle {
+    font-size: 0.95rem;
+    color: #9785be;
+}
+
+/* Tombol Tambah Murid */
+.add-btn {
+    font-size: 0.85rem;
+    padding: 8px 18px;
+    border-radius: 14px;
+}
+
+/* Table header & rows */
+.table th {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.table td {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+}
+/* HEADER */
+.top-bar{
+    background:#fff;
+    padding:18px 30px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+/* CARD */
+.card-soft{
+    background:#fff;
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+/* MY CLASSES */
+.class-card{
+    border-radius:18px;
+    padding:18px;
+    color:#333;
+    font-weight:600;
+}
+.bg-blue{background:#d9e1f0;}
+.bg-red{background:#f2dcd6;}
+.bg-green{background:#d1ebd2;}
+.footer-admin {
+    background: #413a51;
+    color: #ccc;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+}
+
+.footer-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.footer-subtitle {
+    font-size: 11px;
+    color: #bfbad9;
+}
+
+.footer-heading {
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    font-size: 11px;
+    margin-bottom: 4px;
+    color: #d6d3e4;
+}
+
+.footer-copy {
+    font-size: 10px;
+    color: #aaa;
+    padding-bottom: 10px;
+}
+
+/* TASK LIST */
+.task-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid #f0f0f0;
+    font-size:14px;
+}
+.badge-soft{
+    background:#ffe7d6;
+    color:#c05621;
+    border-radius:20px;
+    padding:4px 12px;
+    font-size:12px;
+}
+
+/* CALENDAR */
+.calendar{
+    text-align:center;
+}
+.calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:6px;
+    margin-top:15px;
+}
+.day-name{
+    font-size:12px;
+    color:#999;
+    font-weight:600;
+}
+.day-box{
+    padding:8px 0;
+    border-radius:10px;
+    background:#f1f3f9;
+    font-size:13px;
+}
+.day-active{
+    background:#9785be;
+    color:#fff;
+    font-weight:700;
+}
+
+/* UPCOMING */
+.upcoming-item{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:14px;
+    font-size:14px;
+}
+
+    /* HEADER */
+    .header-top {
+        background: #e3d9f8ff;
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 18px 30px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
