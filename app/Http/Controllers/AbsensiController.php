@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Guru;
 use App\Models\AbsensiGuru;
-use App\Models\JadwalMengajar;
 use App\Mail\QrGuruMail;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -16,26 +15,21 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AbsensiController extends Controller
 {
-public function index(Request $request)
-{
-    $search = $request->input('search');
-
-    $absensi = AbsensiGuru::with(['guru', 'jadwalMengajar.mapel'])
-        ->whereDate('created_at', today())
-        ->when($search, function ($query) use ($search) {
-            $query->whereHas('guru', function ($q) use ($search) {
-                $q->where('nama', 'like', "%{$search}%");
-            });
-        })
-        ->get();
-
-    return view('absensi.index', compact('absensi'));
-}
-
-    public function qrGuru()
+    public function index(Request $request)
     {
-        $guru = Guru::all();
-        return view('absensi.qr-guru', compact('guru'));
+        $search = $request->input('search');
+
+        $absensi = AbsensiGuru::with(['guru'])
+            ->whereDate('tanggal', today())
+            ->when($search, function ($query) use ($search) {
+                $query->whereHas('guru', function ($q) use ($search) {
+                    $q->where('nama', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->get();
+
+        return view('absensi.index', compact('absensi'));
     }
 
     public function scanPage()
@@ -59,12 +53,6 @@ public function index(Request $request)
         $hariIni = $sekarang->toDateString();
         $jamSekarang = $sekarang->format('H:i:s');
         
-        $namaHari = $sekarang->translatedFormat('l'); 
-
-        $jadwal = JadwalMengajar::where('guru_id', $guru->id)
-                                ->where('hari', $namaHari)
-                                ->first();
-
         $absen = AbsensiGuru::where('guru_id', $guru->id)
                             ->whereDate('tanggal', $hariIni)
                             ->first();
@@ -72,7 +60,6 @@ public function index(Request $request)
         if (!$absen) {
             AbsensiGuru::create([
                 'guru_id'   => $guru->id,
-                'jadwal_id' => $jadwal ? $jadwal->id : null,
                 'tanggal'   => $hariIni,
                 'jam_masuk' => $jamSekarang,
                 'status'    => 'hadir'
@@ -88,11 +75,17 @@ public function index(Request $request)
             ]);
             
             return redirect()->route('absensi.index')
-                ->with('success', 'Berhasil Absen kjam_keluar: ' . $guru->nama);
+                ->with('success', 'Berhasil Absen Pulang: ' . $guru->nama);
         }
 
         return redirect()->route('absensi.index')
             ->with('info', 'Halo ' . $guru->nama . ', Anda sudah melengkapi absensi hari ini.');
+    }
+
+    public function qrGuru()
+    {
+        $guru = Guru::all();
+        return view('absensi.qr-guru', compact('guru'));
     }
 
     public function generateQr(Guru $guru)

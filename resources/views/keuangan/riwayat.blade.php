@@ -89,9 +89,6 @@
 </style>
 
 <div class="container py-4">
-    <a href="{{ route('keuangan.index') }}" class="btn-back">
-        <i class="bi bi-arrow-left"></i> Kembali ke Dashboard
-    </a>
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>

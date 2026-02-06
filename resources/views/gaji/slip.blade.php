@@ -162,7 +162,7 @@
                 </div>
                 <div class="receipt-item">
                     <span class="label">Jumlah Pertemuan</span>
-                    <span class="value">{{ $gaji->jumlah_pertemuan }}x Sesi</span>
+                    <span class="value">{{ $gaji->jumlah_jam }}x Sesi</span>
                 </div>
 
                 <hr style="border-top: 2px dashed #e2e8f0; opacity: 1; margin: 15px 0;">

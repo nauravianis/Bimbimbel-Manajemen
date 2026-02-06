@@ -26,7 +26,7 @@
                        <h4 class="fw-bold mb-1">{{ $jadwal->mapel->nama_mapel }}</h4>
                        <p class="text-muted mb-0">{{ $jadwal->paketBimbel->nama_paket }} • {{ $jadwal->hari }}, {{ $jadwal->jam_mulai }}</p>
                     </div>
-                    <a href="{{ route('jadwal.index') }}" class="text-muted text-decoration-none small">← Kembali</a>
+                    <a href="{{ route('jadwal.index') }}" class="text-muted text-decoration-none small">Kembali</a>
                 </div>
 
                 <form action="{{ route('absen.simpan') }}" method="POST">

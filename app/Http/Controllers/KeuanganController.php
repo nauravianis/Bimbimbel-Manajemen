@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaksi;
 use App\Models\Gaji;
 use App\Models\Siswa;
-use App\Models\Guru;
 use App\Models\Pengeluaran;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class KeuanganController extends Controller
@@ -16,8 +14,7 @@ class KeuanganController extends Controller
     {
         $totalPemasukan = Transaksi::where('status', 'lunas')->sum('total');
         $totalPengeluaranGaji = Gaji::sum('total_gaji');
-
-        $totalPengeluaranLain = \App\Models\Pengeluaran::sum('jumlah') ?? 0;
+        $totalPengeluaranLain = Pengeluaran::sum('jumlah') ?? 0;
 
         $totalPengeluaran = $totalPengeluaranGaji + $totalPengeluaranLain;
         $saldo = $totalPemasukan - $totalPengeluaran;
@@ -43,6 +40,7 @@ class KeuanganController extends Controller
 
         $recentIncome = Transaksi::with('siswa')->latest()->take(5)->get()->map(function ($t) {
             return [
+                'date_raw' => $t->created_at,
                 'date' => $t->created_at->format('d M'),
                 'nama' => $t->siswa->nama ?? 'Siswa Umum',
                 'tipe' => 'Income',
@@ -53,6 +51,7 @@ class KeuanganController extends Controller
 
         $recentExpense = Gaji::with('guru')->latest()->take(5)->get()->map(function ($g) {
             return [
+                'date_raw' => $g->created_at,
                 'date' => $g->created_at->format('d M'),
                 'nama' => $g->guru->nama ?? 'Guru Umum',
                 'tipe' => 'Expense',
@@ -63,9 +62,7 @@ class KeuanganController extends Controller
 
         $recent = $recentIncome
             ->merge($recentExpense)
-            ->sortByDesc(function ($item) {
-                return $item['date'];
-            })
+            ->sortByDesc('date_raw')
             ->take(5);
 
         return view('keuangan.index', compact(
@@ -75,6 +72,5 @@ class KeuanganController extends Controller
             'grafik',
             'recent'
         ));
-
     }
 }

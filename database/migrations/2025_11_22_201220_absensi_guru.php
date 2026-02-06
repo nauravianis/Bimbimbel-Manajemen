@@ -17,12 +17,7 @@ return new class extends Migration
     $table->foreignId('guru_id')
           ->constrained('guru')
           ->cascadeOnDelete();
-
-    $table->foreignId('jadwal_id')
-          ->nullable()
-          ->constrained('jadwal_mengajar')
-          ->nullOnDelete();
-
+          
     $table->date('tanggal');
 
     $table->time('jam_masuk')->nullable();

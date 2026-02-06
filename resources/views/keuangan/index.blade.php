@@ -89,7 +89,7 @@
     <h3 class="fw-bold">Laporan Keuangan</h3>
     <p class="text-muted">Kelola pemasukan, pengeluaran, dan gaji guru.</p>
 
-<div class="header-top mb-4 d-flex justify-content-end align-items-center">
+    <div class="header-top mb-4 d-flex justify-content-end align-items-center">
         <div class="d-flex gap-2">
             <a href="{{ route('transaksi.create') }}" class="btn btn-mro"><i class="bi bi-plus-circle"></i> Pembayaran Siswa</a>
             <a href="{{ route('gaji.index') }}" class="btn btn-outline-mro"><i class="bi bi-wallet2"></i> Gaji Guru</a>
@@ -118,7 +118,6 @@
     </div>
 
     <div class="row g-4">
-        {{-- KIRI --}}
         <div class="col-lg-8">
             <div class="card-soft mb-4">
                 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -129,7 +128,6 @@
                     </div>
                 </div>
 
-                {{-- GRAFIK MODERN --}}
                 <div class="chart-container">
                     <canvas id="modernChart"></canvas>
                 </div>
@@ -173,7 +171,6 @@
             </div>
         </div>
 
-        {{-- KANAN --}}
         <div class="col-lg-4">
             <div class="card-soft mb-4 text-center py-5">
                 <div class="icon-circle bg-purple-light mx-auto mb-3" style="width: 60px; height: 60px; line-height: 60px; border-radius: 50%; background: #f1effa;">

@@ -10,7 +10,9 @@ use App\Http\Controllers\GajiController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\RekapAbsensiGuruController;
 use App\Http\Controllers\JadwalSiswaController;
+
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
@@ -69,4 +71,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/gaji/slip/{id}', [GajiController::class, 'show'])->name('gaji.show');
     Route::post('/gaji/store', [GajiController::class, 'store'])->name('gaji.store');
     Route::post('/guru/update-tarif/{id}', [GuruController::class, 'updateTarif'])->name('guru.update-tarif');
+
+    //rekap guru
+    Route::get('/absensi/rekap-guru', [RekapAbsensiGuruController::class, 'index'])->name('absensi.rekap-guru');
+
+    //jadwal guru
+    Route::get('/jadwal/jadwal_guru/{guru_id}', [JadwalController::class, 'guruJadwal'])->name('jadwal.jadwal_guru');
+
+
+
 });

@@ -22,7 +22,6 @@
         box-shadow: 0 20px 45px rgba(0,0,0,.12);
     }
 
-    /* Sinkronisasi dengan Modal Detail */
     .avatar-circle {
         width: 65px; 
         height: 65px; 

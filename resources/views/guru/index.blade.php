@@ -58,13 +58,19 @@
     <h3 class="fw-bold">Data Guru</h3>
     <p>Kelola data Guru</p>
 
-    <div class="header-top mb-4 d-flex justify-content-between align-items-center">
-        <form action="{{ route('guru.index') }}" method="GET" class="w-50">
-            <input type="text" name="search" class="form-control" placeholder="Cari..." value="{{ request('search') }}" style="border-radius: 20px; border: none; padding: 12px 18px; background: #fcfcfdff;">
-        </form>
-        
+<div class="header-top mb-4 d-flex align-items-center">
+    <form action="{{ route('guru.index') }}" method="GET" class="w-50">
+        <input type="text" name="search" class="form-control"
+            placeholder="Cari..."
+            value="{{ request('search') }}"
+            style="border-radius: 20px; border: none; padding: 12px 18px; background: #fcfcfdff;">
+    </form>
+
+    <div class="ms-auto d-flex gap-2">
+        <a href="{{ route('absensi.rekap-guru') }}" class="btn btn-mro">Rekap Guru</a>
         <a href="{{ route('guru.create') }}" class="btn btn-mro">Tambah Guru Baru</a>
     </div>
+</div>
 
     <div class="table-container shadow-sm">
         <div class="table-responsive">
@@ -87,12 +93,13 @@
                             <td class="fw-bold">{{ $item->nama }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->nomor_telp }}</td>
-                            <td>{{ $item->tanggal_lahir ?? '-' }}</td>
+                            <td>{{ $item->tanggal_lahir ? \Carbon\Carbon::parse($item->tanggal_lahir)->format('d-m-Y'): '-' }}</td>
                             <td class="text-center">{{ $item->jenis_kelamin ?? '-' }}</td>
                             <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $item->alamat ?? '-' }}</td>
                             <td class="text-center">{{ $item->created_at->format('Y') }}</td>
                             <td>
                                 <div class="d-flex gap-1 justify-content-center">
+                                    <a href="{{ route('jadwal.jadwal_guru', $item->id) }}" class="btn btn-success btn-sm px-3 text-white" style="font-size: 11px; border-radius: 10px;">Lihat Jadwal</a>
                                     <a href="{{ route('guru.edit', $item->id) }}" class="btn btn-warning btn-sm px-3 text-white" style="font-size: 11px; border-radius: 10px;">Edit</a>
                                     <form action="{{ route('guru.destroy', $item->id) }}" method="POST" class="d-inline">
                                         @csrf @method('DELETE')

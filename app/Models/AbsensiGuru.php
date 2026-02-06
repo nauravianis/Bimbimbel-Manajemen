@@ -10,7 +10,6 @@ class AbsensiGuru extends Model
 
 protected $fillable = [
     'guru_id',
-    'jadwal_id',
     'tanggal',
     'jam_masuk',
     'jam_keluar',
@@ -24,9 +23,6 @@ protected $fillable = [
         return $this->belongsTo(Guru::class, 'guru_id');
     }
 
-    public function jadwalMengajar()
-    {
-        return $this->belongsTo(JadwalMengajar::class, 'jadwal_id');
-    }
+
 }
 

@@ -85,7 +85,7 @@ body {
                 <p class="text-muted mb-0" style="font-size: 11px;">Pilih guru untuk mencetak kode QR absensi</p>
             </div>
             <a href="{{ url()->previous() }}" class="btn btn-sm btn-light rounded-pill px-3" style="font-size: 11px;">
-                <i class="bi bi-arrow-left"></i> Kembali
+                 Kembali
             </a>
         </div>
 

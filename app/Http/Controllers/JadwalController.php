@@ -124,5 +124,21 @@ class JadwalController extends Controller
             ->with('success', 'Jadwal berhasil dihapus');
     }
 
+    public function guruJadwal($guru_id)
+{
+    $guru = Guru::findOrFail($guru_id);
+
+    $jadwals = JadwalMengajar::with(['mapel', 'paketBimbel'])
+        ->where('guru_id', $guru_id)
+        ->orderByRaw("
+            FIELD(hari,
+            'Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu')
+        ")
+        ->orderBy('jam_mulai')
+        ->get();
+
+    return view('jadwal.guru_jadwal', compact('guru', 'jadwals'));
+}
+
 
 }

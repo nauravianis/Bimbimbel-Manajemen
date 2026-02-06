@@ -20,10 +20,6 @@
         <p class="text-muted">Pantau kuota belajar seluruh siswa secara real-time</p>
     </div>
 
-    <a href="{{ url()->previous() }}" 
-       class="btn btn-light rounded-pill px-4">
-        ⬅ Kembali
-    </a>
 </div>
 
     <div class="card card-custom">
