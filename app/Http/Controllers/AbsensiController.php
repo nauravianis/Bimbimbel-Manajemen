@@ -106,4 +106,23 @@ class AbsensiController extends Controller
 
         return back()->with('success', 'QR Berhasil dikirim ke Email ' . $guru->nama);
     }
+
+    public function izin(Request $request)
+{
+    AbsensiGuru::updateOrCreate(
+        [
+            'guru_id' => $request->guru_id,
+            'tanggal' => now()->toDateString(),
+        ],
+        [
+            'status' => $request->status,
+            'jam_masuk' => null,
+            'jam_keluar' => null,
+            'keterangan' => $request->keterangan,
+        ]
+    );
+
+    return back()->with('success', 'Izin berhasil dicatat');
+}
+
 }

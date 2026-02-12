@@ -102,6 +102,7 @@
 
     <h3 class="fw-bold">Absensi Guru</h3>
     <p class="text-muted">Monitoring kehadiran pengajar bimbingan belajar hari ini</p>
+    
 
     <div class="header-top mb-4">
         <div class="row align-items-center g-3">
@@ -128,8 +129,10 @@
 <a href="{{ route('monitoring.kuota') }}" class="btn btn-outline-mro">
     <i class="bi bi-speedometer2 me-1"></i> Monitoring Kuota
 </a>
+
                 </div>
             </div>
+            
         </div>
     </div>
 

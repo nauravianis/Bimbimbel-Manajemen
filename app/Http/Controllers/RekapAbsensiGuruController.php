@@ -21,11 +21,9 @@ public function index(Request $request)
 
     foreach ($guru as $g) {
 
-        // NORMALISASI STATUS (lowercase)
         $hadirList = $g->absensi->filter(fn($a) => strtolower($a->status) === 'hadir');
-        $izin  = $g->absensi->filter(fn($a) => strtolower($a->status) === 'izin')->count();
-        $sakit = $g->absensi->filter(fn($a) => strtolower($a->status) === 'sakit')->count();
-        $alpha = $g->absensi->filter(fn($a) => strtolower($a->status) === 'alpha')->count();
+        $tidak_hadir  = $g->absensi->filter(fn($a) => strtolower($a->status) === 'tidak_hadir')->count();
+        $terlambat = $g->absensi->filter(fn($a) => strtolower($a->status) === 'terlambat')->count();
 
         // HITUNG TOTAL JAM (ANTI MINUS)
         $totalJam = 0;
@@ -43,9 +41,8 @@ public function index(Request $request)
         }
 
         $g->hadir     = $hadirList->count();
-        $g->izin      = $izin;
-        $g->sakit     = $sakit;
-        $g->alpha     = $alpha;
+        $g->tidak_hadir      = $tidak_hadir;
+        $g->terlambat     = $terlambat;
         $g->total_jam = round($totalJam, 1);
     }
 

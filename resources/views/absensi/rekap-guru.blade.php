@@ -99,10 +99,8 @@
                     <thead>
                         <tr>
                             <th class="ps-4">Guru</th>
-                            <th>Hadir</th>
-                            <th>Izin</th>
-                            <th>Sakit</th>
-                            <th>Alpha</th>
+                            <th>Jumlah kehadiran</th>
+                            <th>Jumlah Tidak Hadir</th>
                             <th>Total Jam</th>
                         </tr>
                     </thead>
@@ -119,19 +117,7 @@
 
                         <td>
                             <span class="badge-status status-izin">
-                                {{ $g->izin }}
-                            </span>
-                        </td>
-
-                        <td>
-                            <span class="badge-status status-izin">
-                                {{ $g->sakit }}
-                            </span>
-                        </td>
-
-                        <td>
-                            <span class="badge-status status-alpha">
-                                {{ $g->alpha }}
+                                {{ $g->tidak_hadir }}
                             </span>
                         </td>
 

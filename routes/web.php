@@ -79,5 +79,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jadwal/jadwal_guru/{guru_id}', [JadwalController::class, 'guruJadwal'])->name('jadwal.jadwal_guru');
 
 
+    Route::post('/absensi/izin', [AbsensiController::class, 'izin'])
+    ->name('absensi.izin');
+
 
 });
